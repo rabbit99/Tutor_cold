@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
@@ -90,8 +92,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public TextMeshProUGUI text_speed;
     public TextMeshProUGUI text_mode;
 
+    private PhotonView _pv;
+
     private void Start()
     {
+        _pv = this.gameObject.GetComponent<PhotonView>();
         climbingScriptDone = GetComponent<ClimbingDone>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -103,6 +108,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void Update()
     {
+        if (_pv && !_pv.IsMine) return;
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
@@ -120,6 +126,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_pv && !_pv.IsMine) return;
         MovePlayer();
     }
 

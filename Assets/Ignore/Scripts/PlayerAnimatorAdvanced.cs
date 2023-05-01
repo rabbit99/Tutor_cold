@@ -15,6 +15,7 @@ public class PlayerAnimatorAdvanced : MonoBehaviour
     private PhotonView _pv;
     private float horizontalInputValue;
     private float verticalInputValue;
+    private bool _flying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +45,9 @@ public class PlayerAnimatorAdvanced : MonoBehaviour
             }
             bool hasHorizontalInput = !Mathf.Approximately(horizontalInputValue, 0f); //bool=有或無，指有水平輸入=電腦真的有偵測到水平輸入
             bool hasVerticalInput = !Mathf.Approximately(verticalInputValue, 0f);//垂直輸入=電腦真的有偵測到垂直輸入
-            bool Flying = hasHorizontalInput || hasVerticalInput; //定義Flying的意思=有水平輸入或垂直輸入
+            _flying = hasHorizontalInput || hasVerticalInput; //定義Flying的意思=有水平輸入或垂直輸入
 
-            _anim.SetBool("Flying", Flying); //意思為在Animator中若為Flying狀態，則表現出Flying的動畫
+            _anim.SetBool("Flying", _flying); //意思為在Animator中若為Flying狀態，則表現出Flying的動畫
             GetComponent<Animator>().SetFloat("Speed", speed);//意思為將Animator中的速度套入這邊的速度值
         }
     }

@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1Mygame/Login/LoginScene.unity
+    path: Assets/1Mygame/Scenes/LoginScene.unity
     guid: 5e869f7ea3553444d81caf7ced496c4d
   - enabled: 1
-    path: Assets/1Mygame/Lobby/LobbyScene.unity
+    path: Assets/1Mygame/Scenes/LobbyScene.unity
     guid: fb41a1c813c7a6241ac53c6ed78b8fe0
   - enabled: 1
-    path: Assets/1Mygame/Room/RoomScene.unity
+    path: Assets/1Mygame/Scenes/RoomScene.unity
     guid: 959c8b4ee1a1410479d6e4a83381a201
   - enabled: 1
-    path: Assets/1Mygame/SimpleGameScene.unity
+    path: Assets/1Mygame/Scenes/SimpleGameScene.unity
     guid: b4df1967ace6e47408d1ef5384947064
+  - enabled: 0
+    path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
+    guid: 98efc37d6307844488eb3e4247dde7e9
   m_configObjects: {}

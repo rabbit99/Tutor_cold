@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class ThirdPersonCam : MonoBehaviour
 {
-    [Header("References")]
+
+    // [Header("Player References")]
     public Transform orientation;
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
-
-    public float rotationSpeed;
-
     public Transform combatLookAt;
 
+    [Header("Cam References & Setting")]
     public GameObject thirdPersonCam;
     public GameObject combatCam;
     public GameObject topDownCam;
@@ -25,10 +24,16 @@ public class ThirdPersonCam : MonoBehaviour
         Combat,
         Topdown
     }
+    public float rotationSpeed;
 
     private void Start()
     {
 
+
+    }
+
+    public void Init()
+    {
         SwitchCameraStyle(CameraStyle.Basic);
     }
 
