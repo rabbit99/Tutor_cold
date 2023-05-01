@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -12,6 +13,7 @@ public class GameUI : MonoBehaviourPunCallbacks
     public GameObject game_over_ui;
     public GameObject game_win_ui;
     public GameObject back_room_btn;
+    public Action OnGameEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class GameUI : MonoBehaviourPunCallbacks
         if (hash.ContainsKey("life"))
         {
             Debug.Log("OnPlayerPropertiesUpdate ContainsKey life ");
-            if (targetPlayer.NickName == PhotonNetwork.LocalPlayer.NickName )
+            if (targetPlayer.NickName == PhotonNetwork.LocalPlayer.NickName)
             {
                 game_over_ui.SetActive(!(bool)hash["life"]);
                 game_win_ui.SetActive((bool)hash["life"]);
@@ -50,7 +52,8 @@ public class GameUI : MonoBehaviourPunCallbacks
                 game_over_ui.SetActive((bool)hash["life"]);
                 game_win_ui.SetActive(!(bool)hash["life"]);
             }
-        
+
+            OnGameEnd?.Invoke();
         }
     }
 }

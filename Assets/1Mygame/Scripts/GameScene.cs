@@ -5,16 +5,13 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
-using Cinemachine;
 
 public class GameScene : MonoBehaviour
 {
     public Transform BlueSpawnPos;
     public Transform RedSpawnPos;
     public ThirdPersonCam ThirdPersonCamController;
-    public CinemachineFreeLook CombatCam;
-    public CinemachineFreeLook ThirdPersonCam;
-    public CinemachineFreeLook TopDownCam;
+    public GameUI GameUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +42,7 @@ public class GameScene : MonoBehaviour
         GameObject player = PhotonNetwork.Instantiate("Player", spwanPos, Quaternion.identity);
         PlayerCamController playerCamController = player.GetComponent<PlayerCamController>();
         playerCamController.SetThirdPersonCam(ThirdPersonCamController);
-        playerCamController.SetCombatCam(CombatCam);
-        playerCamController.SetThirdPersonCam(ThirdPersonCam);
-        playerCamController.SetTopDownCam(TopDownCam);
+        GameUI.OnGameEnd = () => { ThirdPersonCamController.TurnOffAllCam(); };
     }
 
 

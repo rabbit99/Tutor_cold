@@ -20,21 +20,24 @@ public class PlayerCamController : MonoBehaviour
         ThirdPersonCam.rb = rb;
         ThirdPersonCam.combatLookAt = combatLookAt;
         ThirdPersonCam.Init();
+        setCombatCam(ThirdPersonCam.combatCam.GetComponent<CinemachineFreeLook>());
+        setThirdPersonCam(ThirdPersonCam.thirdPersonCam.GetComponent<CinemachineFreeLook>());
+        setTopDownCam(ThirdPersonCam.topDownCam.GetComponent<CinemachineFreeLook>());
     }
 
-    public void SetCombatCam(CinemachineFreeLook cam)
+    private void setCombatCam(CinemachineFreeLook cam)
     {
         cam.Follow = player;
         cam.LookAt = combatLookAt;
     }
 
-    public void SetThirdPersonCam(CinemachineFreeLook cam)
+    private void setThirdPersonCam(CinemachineFreeLook cam)
     {
         cam.Follow = player;
         cam.LookAt = player;
     }
 
-    public void SetTopDownCam(CinemachineFreeLook cam)
+    private void setTopDownCam(CinemachineFreeLook cam)
     {
         cam.Follow = player;
         cam.LookAt = player;

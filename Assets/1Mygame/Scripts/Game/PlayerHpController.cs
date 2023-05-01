@@ -28,6 +28,7 @@ public class PlayerHpController : MonoBehaviour, IPunObservable
         if (_pv && !_pv.IsMine)
             return;
         playerHealth -= 10;
+        hPBar.UpdateHp(playerHealth);
         if (playerHealth <= 0)
         {
             Hashtable myHash = PhotonNetwork.LocalPlayer.CustomProperties;

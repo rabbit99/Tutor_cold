@@ -37,6 +37,15 @@ public class ThirdPersonCam : MonoBehaviour
         SwitchCameraStyle(CameraStyle.Basic);
     }
 
+    public void TurnOffAllCam()
+    {
+        combatCam.SetActive(false);
+        thirdPersonCam.SetActive(false);
+        topDownCam.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private void Update()
     {
         // switch styles
